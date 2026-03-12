@@ -91,7 +91,7 @@ export function createTestContext(
 ) {
   const context = {
     db: createTestDb(),
-    env: env,
+    env: { ...env },
     executionCtx: createMockExecutionCtx(),
     auth: createMockAuth(),
     ...overrides,

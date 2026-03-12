@@ -71,12 +71,12 @@ export const FuwariCommentItem = memo(
             ) : comment.user?.image ? (
               <img
                 src={comment.user.image}
-                alt={comment.user.name}
+                alt={comment.user.name ?? m.comments_item_anonymous()}
                 className="w-full h-full object-cover"
               />
             ) : (
               <span className="text-sm font-medium fuwari-text-50">
-                {comment.user?.name.slice(0, 1) || "?"}
+                {comment.user?.name?.slice(0, 1) || "?"}
               </span>
             )}
           </div>

@@ -177,6 +177,10 @@ export async function getRepliesByRootId(
         return { ...reply, replyTo: null };
       }
 
+      if (!replyToComment.userId) {
+        return { ...reply, replyTo: null };
+      }
+
       const replyToUserInfo = await db.query.user.findFirst({
         where: eq(user.id, replyToComment.userId),
         columns: {
@@ -398,7 +402,12 @@ export async function getCommentAuthorWithEmail(db: DB, commentId: number) {
     .where(eq(CommentsTable.id, commentId))
     .limit(1);
 
-  if (result.length === 0 || !result[0].userEmail) {
+  if (
+    result.length === 0 ||
+    !result[0].userId ||
+    !result[0].userName ||
+    !result[0].userEmail
+  ) {
     return null;
   }
 

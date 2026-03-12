@@ -107,11 +107,7 @@ export class PostProcessWorkflow extends WorkflowEntrypoint<Env, Params> {
         ? await highlightCodeBlocks(post.contentJson)
         : null;
 
-      await PostRepo.updatePublicContentSnapshot(
-        db,
-        postId,
-        publicContentJson,
-      );
+      await PostRepo.updatePublicContentSnapshot(db, postId, publicContentJson);
     });
 
     // 4. Update search index (skip for future posts — ScheduledPublishWorkflow handles it)

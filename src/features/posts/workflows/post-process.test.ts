@@ -7,8 +7,8 @@ import {
 } from "tests/test-utils";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import * as CacheService from "@/features/cache/cache.service";
-import * as PostService from "@/features/posts/posts.service";
 import { POSTS_CACHE_KEYS } from "@/features/posts/posts.schema";
+import * as PostService from "@/features/posts/posts.service";
 import { calculatePostHash } from "@/features/posts/utils/sync";
 import { PostProcessWorkflow } from "@/features/posts/workflows/post-process";
 import { PostsTable } from "@/lib/db/schema";
@@ -120,6 +120,8 @@ describe("PostProcessWorkflow", () => {
     });
 
     expect(updatedPost?.publicContentJson).toBeTruthy();
-    expect(updatedPost?.updatedAt?.getTime()).toBe(updatedAtBeforeRun.getTime());
+    expect(updatedPost?.updatedAt?.getTime()).toBe(
+      updatedAtBeforeRun.getTime(),
+    );
   });
 });
