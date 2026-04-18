@@ -22,13 +22,6 @@
       "remote": true
     }
   ],
-  "r2_buckets": [
-    {
-      "bucket_name": "bucket-name-placeholder",
-      "binding": "R2",
-      "remote": true
-    }
-  ],
   "kv_namespaces": [
     {
       "binding": "KV",
@@ -130,11 +123,6 @@
         },
         {
           "binding": "OAUTH_KV"
-        }
-      ],
-      "r2_buckets": [
-        {
-          "binding": "R2"
         }
       ],
       "d1_databases": [
