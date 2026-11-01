@@ -69,6 +69,9 @@ export default defineConfig((ctx) => {
         App: exports.worker({ cache: { enabled: true } }),
         RateLimiter: exports.durableObject({ storage: "sqlite" }),
         PostPublisher: exports.durableObject({ storage: "sqlite" }),
+        // Retire the namespace this Worker provisioned before PasswordHasher
+        // was removed from the code.
+        PasswordHasher: exports.durableObject({ state: "deleted" }),
       },
     },
   };
